@@ -205,7 +205,7 @@ public class GameWindow {
                 		
                 		// this is the only section you really need to modify (although you're certainly welcome to mess
                 		//with the rest of the file, but do so at your own peril)
-                        " <<<<<<<<<<<<<<<Your instructions go here>>>>>>>>>",
+                        "why",
                         
                         
                         

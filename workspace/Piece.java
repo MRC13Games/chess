@@ -45,22 +45,119 @@ public class Piece {
         g.drawImage(this.img, x, y, null);
     }
     
-    
-    // TO BE IMPLEMENTED!
-    //return a list of every square that is "controlled" by this piece. A square is controlled
-    //if the piece capture into it legally.
-    public ArrayList<Square> getControlledSquares(Square[][] board, Square start) {
-     return null;
-    }
-    
 
-    //TO BE IMPLEMENTED!
-    //implement the move function here
-    //it's up to you how the piece moves, but at the very least the rules should be logical and it should never move off the board!
-    //returns an arraylist of squares which are legal to move to
-    //please note that your piece must have some sort of logic. Just being able to move to every square on the board is not
-    //going to score any points.
-    public ArrayList<Square> getLegalMoves(Board b, Square start){
-    	return null;
+    public ArrayList<Square> getControlledSquares(Square[][] board, Square start) {
+        ArrayList<Square> controlledSquares = new ArrayList<>();
+        int startRow = start.getRow();
+        int startCol = start.getCol();
+        boolean startColor = start.getOccupyingPiece().getColor(); // Get the color of the piece at start
+    
+        // Up
+        for (int i = startRow - 1; i >= 0; i--) {
+            if (board[i][startCol].getOccupyingPiece() == null) {
+                controlledSquares.add(board[i][startCol]);
+            } else {
+                if (board[i][startCol].getOccupyingPiece().getColor() != startColor) {
+                    controlledSquares.add(board[i][startCol]); // Can capture opponent piece
+                }
+                break; // Stop at first occupied square
+            }
+        }
+    
+        // Down
+        for (int i = startRow + 1; i < board.length; i++) {
+            if (board[i][startCol].getOccupyingPiece() == null) {
+                controlledSquares.add(board[i][startCol]);
+            } else {
+                if (board[i][startCol].getOccupyingPiece().getColor() != startColor) {
+                    controlledSquares.add(board[i][startCol]);
+                }
+                break;
+            }
+        }
+    
+        // Left
+        for (int i = startCol - 1; i >= 0; i--) {
+            if (board[startRow][i].getOccupyingPiece() == null) {
+                controlledSquares.add(board[startRow][i]);
+            } else {
+                if (board[startRow][i].getOccupyingPiece().getColor() != startColor) {
+                    controlledSquares.add(board[startRow][i]);
+                }
+                break;
+            }
+        }
+    
+        // Right
+        for (int i = startCol + 1; i < board[startRow].length; i++) {
+            if (board[startRow][i].getOccupyingPiece() == null) {
+                controlledSquares.add(board[startRow][i]);
+            } else {
+                if (board[startRow][i].getOccupyingPiece().getColor() != startColor) {
+                    controlledSquares.add(board[startRow][i]);
+                }
+                break;
+            }
+        }
+    
+        return controlledSquares;
     }
-}
+    
+    public ArrayList<Square> getLegalMoves(Board b, Square start) {
+        ArrayList<Square> legalMoves = new ArrayList<>();
+        Square[][] board = b.getSquareArray();
+        int startRow = start.getRow();
+        int startCol = start.getCol();
+        boolean startColor = start.getOccupyingPiece().getColor(); // Get the color of the piece at start
+    
+        // Up
+        for (int i = startRow - 1; i >= 0; i--) {
+            if (board[i][startCol].getOccupyingPiece() == null) {
+                legalMoves.add(board[i][startCol]);
+            } else {
+                if (board[i][startCol].getOccupyingPiece().getColor() != startColor) {
+                    legalMoves.add(board[i][startCol]);
+                }
+                break;
+            }
+        }
+    
+        // Down
+        for (int i = startRow + 1; i < board.length; i++) {
+            if (board[i][startCol].getOccupyingPiece() == null) {
+                legalMoves.add(board[i][startCol]);
+            } else {
+                if (board[i][startCol].getOccupyingPiece().getColor() != startColor) {
+                    legalMoves.add(board[i][startCol]);
+                }
+                break;
+            }
+        }
+    
+        // Left
+        for (int i = startCol - 1; i >= 0; i--) {
+            if (board[startRow][i].getOccupyingPiece() == null) {
+                legalMoves.add(board[startRow][i]);
+            } else {
+                if (board[startRow][i].getOccupyingPiece().getColor() != startColor) {
+                    legalMoves.add(board[startRow][i]);
+                }
+                break;
+            }
+        }
+    
+        // Right
+        for (int i = startCol + 1; i < board[startRow].length; i++) {
+            if (board[startRow][i].getOccupyingPiece() == null) {
+                legalMoves.add(board[startRow][i]);
+            } else {
+                if (board[startRow][i].getOccupyingPiece().getColor() != startColor) {
+                    legalMoves.add(board[startRow][i]);
+                }
+                break;
+            }
+        }
+    
+        return legalMoves;
+    }
+  }

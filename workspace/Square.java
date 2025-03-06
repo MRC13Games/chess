@@ -79,9 +79,9 @@ public class Square extends JComponent {
         super.paintComponent(g);
         
         if (this.color) {
-            g.setColor(new Color(221,192,127));
+            g.setColor(new Color(255,253,208));
         } else {
-            g.setColor(new Color(101,67,33));
+            g.setColor(new Color(52,52,52));
         }
         
         g.fillRect(this.getX(), this.getY(), this.getWidth(), this.getHeight());
@@ -89,6 +89,11 @@ public class Square extends JComponent {
         if(occupyingPiece != null && dispPiece) {
             occupyingPiece.draw(g, this);
         }
+    }
+
+    public void setColor(Color color2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setColor'");
     }
     
     
