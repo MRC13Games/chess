@@ -102,7 +102,7 @@ public class Piece {
     
         return controlledSquares;
     }
-    
+    //This makes my piece move how a regular rook moves in chess, straight up, down, left, and right
     public ArrayList<Square> getLegalMoves(Board b, Square start) {
         ArrayList<Square> legalMoves = new ArrayList<>();
         Square[][] board = b.getSquareArray();
