@@ -222,7 +222,21 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
                     if(endSquare == s){
                        endSquare.put(currPiece);
                        fromMoveSquare.put(null);
-                       whiteTurn = !whiteTurn;
+                       System.out.println(isInCheck(whiteTurn));
+
+                       if(isInCheck(whiteTurn)){
+                            //undo the move
+                            endSquare.put(null);
+                            fromMoveSquare.put(currPiece);
+                       }
+                       if(isInCheck(!whiteTurn)){
+                        //undo the move
+                        endSquare.put(null);
+                        fromMoveSquare.put(currPiece);
+                        }
+                       else{
+                        whiteTurn = !whiteTurn;
+                       }
                 }
     
             }
@@ -230,6 +244,10 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
 
             
     }
+
+    //using isInCheck
+        
+       
 
        
         fromMoveSquare.setDisplay(true);
@@ -283,7 +301,7 @@ public class Board extends JPanel implements MouseListener, MouseMotionListener 
                 }
             }
         }
-    
+        System.out.println(kingSquare);
         if (kingSquare == null) {
             return false;
         }
